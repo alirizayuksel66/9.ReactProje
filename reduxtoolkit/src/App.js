@@ -3,21 +3,21 @@ import Header from './todo/header';
 import AddTodo from './todo/add';
 import TodoList from './todo/list'
 import Modal from './todo/modal'
+import { useSelector } from 'react-redux';
 
 function App() {
 
+  const { open: isModalOpen } = useSelector(state => state.modal)
   const [user, setUser] = useState(false);
   const [language, setLanguage] = useState("tr"); // Todo
   const [dark, setDark] = useState();
-  const [modal, setModal] = useState(false);
-  const close = () => setModal(false)
 
   return (
     <main>
-      {modal && <Modal close={close} name={modal.name} data={modal.data} />}
-      <Header user={user} setUser={setUser} />;
-      <AddTodo user={user}/>;
-      <TodoList setModal={setModal} user={user}/>
+      {isModalOpen && <Modal />}
+      <Header user={user} setUser={setUser} />
+      <AddTodo />
+      <TodoList />
     </main>
   );
 }

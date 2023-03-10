@@ -1,7 +1,8 @@
 import { useDispatch } from "react-redux"
 import { deleteTodo } from "../store/todo"
+import { openModal } from "../store/modal"
 
-export default function TodoItem({ todo, setModal }) {
+export default function TodoItem({ todo }) {
 
     const dispacth = useDispatch()
     const deleteHandle = () => {
@@ -9,10 +10,10 @@ export default function TodoItem({ todo, setModal }) {
     }
 
     const editHandle = () => {
-        setModal({
+        dispacth(openModal({
             name: "edit-todo",
             data: todo
-        })
+        }))
     }
 
     return (
