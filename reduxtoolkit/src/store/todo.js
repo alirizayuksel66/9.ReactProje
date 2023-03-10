@@ -21,7 +21,7 @@ const todos = createSlice({
             state.todos = state.todos.map(todo => {
                 if (action.payload.id == todo.id){
                     todo.title = action.payload.title
-                    done.done = action.payload.done
+                    todo.done = action.payload.done
                 }
                 return todo
             })
